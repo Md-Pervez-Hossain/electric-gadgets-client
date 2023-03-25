@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FadeLoader } from "react-spinners";
 
 const AddProducts = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -170,25 +169,11 @@ const AddProducts = () => {
             placeholder="Product Details"
           ></textarea>
         </div>
-        {isLoading ? (
-          <>
-            <FadeLoader
-              color={"#000000"}
-              loading={isLoading}
-              size={50}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          </>
-        ) : (
-          <>
-            <div className="mt-5">
-              <button className="w-full bg-green-500 py-4 rounded-lg text-xl font-bold text-white">
-                Submit
-              </button>
-            </div>
-          </>
-        )}
+        <div className="mt-5">
+          <button className="w-full bg-green-500 py-4 rounded-lg text-xl font-bold text-white">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
