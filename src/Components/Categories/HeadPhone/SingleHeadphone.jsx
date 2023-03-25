@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FaCartPlus, FaMinus, FaPlug, FaPlus } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import DisplayAllProducts from "./DisplayAllProducts";
-import { FadeLoader } from "react-spinners";
 
 const SingleHeadphone = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -106,26 +105,11 @@ const SingleHeadphone = () => {
       </div>
       <div>
         <h2 className="text-4xl font-bold mt-32">Some Best Selling Products</h2>
-        {isLoading ? (
-          <>
-            <FadeLoader
-              color={"#000000"}
-              loading={isLoading}
-              size={50}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          </>
-        ) : (
-          <>
-            {" "}
-            <div className="grid grid-cols-4 gap-5 mt-10">
-              {products.map((product) => (
-                <DisplayAllProducts product={product}></DisplayAllProducts>
-              ))}
-            </div>
-          </>
-        )}
+        <div className="grid grid-cols-4 gap-5 mt-10">
+          {products.map((product) => (
+            <DisplayAllProducts product={product}></DisplayAllProducts>
+          ))}
+        </div>
       </div>
     </div>
   );
