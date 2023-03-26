@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const DisplayWishList = ({ wishlist }) => {
   const { image, productName, reSellPrice, _id } = wishlist;
   const handleAddToCart = (wishlist) => {
-    fetch("http://localhost:5000/cartpage", {
+    fetch("https://electronic-gadgets-server.vercel.app/cartpage", {
       method: "POST",
       headers: {
         "content-type": "application/json",

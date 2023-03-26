@@ -62,9 +62,12 @@ const AuthContext = ({ children }) => {
     const agree = window.confirm("Are you Sure You Want To Delete ?");
     console.log(cartProduct._id);
     if (agree) {
-      fetch(`http://localhost:5000/cartpage/${cartProduct?._id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://electronic-gadgets-server.vercel.app/cartpage/${cartProduct?._id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

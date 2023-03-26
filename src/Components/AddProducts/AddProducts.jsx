@@ -37,7 +37,7 @@ const AddProducts = () => {
           time,
         };
         console.log(productsInfo);
-        fetch("http://localhost:5000/addProducts", {
+        fetch("https://electronic-gadgets-server.vercel.app/addProducts", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -18,7 +18,7 @@ const SingleHeadphone = () => {
   console.log(singlePhoneInfo);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://electronic-gadgets-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         setIsLoading(true);
@@ -34,7 +34,7 @@ const SingleHeadphone = () => {
 
   const handleAddToCart = (router) => {
     console.log(router);
-    fetch("http://localhost:5000/cartpage", {
+    fetch("https://electronic-gadgets-server.vercel.app/cartpage", {
       method: "POST",
       headers: {
         "content-type": "application/json",

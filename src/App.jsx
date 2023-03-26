@@ -27,12 +27,19 @@ function App() {
           children: [
             {
               path: "/home/headPhone",
+              loader: async () => {
+                return fetch(
+                  "https://electronic-gadgets-server.vercel.app/products/HeadPhone"
+                );
+              },
               element: <HeadPhone></HeadPhone>,
             },
             {
               path: "/home/router",
               loader: async () => {
-                return fetch("http://localhost:5000/products/Router");
+                return fetch(
+                  "https://electronic-gadgets-server.vercel.app/products/Router"
+                );
               },
               element: <Router></Router>,
             },
@@ -72,7 +79,9 @@ function App() {
         {
           path: "/cartPage",
           loader: async () => {
-            return fetch("http://localhost:5000/cartpage");
+            return fetch(
+              "https://electronic-gadgets-server.vercel.app/cartpage"
+            );
           },
           element: (
             <PrivateRoute>
@@ -83,14 +92,18 @@ function App() {
         {
           path: "/product/:id",
           loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/product/${params.id}`);
+            return fetch(
+              `https://electronic-gadgets-server.vercel.app/product/${params.id}`
+            );
           },
           element: <SingleHeadphone></SingleHeadphone>,
         },
         {
           path: "/wishlist",
           loader: async () => {
-            return fetch("http://localhost:5000/wishlist");
+            return fetch(
+              "https://electronic-gadgets-server.vercel.app/wishlist"
+            );
           },
           element: (
             <PrivateRoute>

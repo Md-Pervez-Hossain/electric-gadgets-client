@@ -6,7 +6,7 @@ const DisplayHedphones = ({ router }) => {
 
   const handleAddToCart = (router) => {
     console.log(router);
-    fetch("http://localhost:5000/cartpage", {
+    fetch("https://electronic-gadgets-server.vercel.app/cartpage", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -19,7 +19,7 @@ const DisplayHedphones = ({ router }) => {
   };
 
   const handleWishList = (router) => {
-    fetch("http://localhost:5000/wishlist", {
+    fetch("https://electronic-gadgets-server.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",
