@@ -20,8 +20,8 @@ const Header = () => {
   };
   return (
     <div className=" sticky top-0 pb-4 z-10 mb-10 bg-white shadow-lg ">
-      <div className=" w-9/12 mx-auto  ">
-        <div className="flex justify-between items-center py-4 bg-green-500 text-white px-4 mb-5">
+      <div className=" md:w-9/12 mx-auto  ">
+        <div className="flex flex-wrap justify-between items-center py-4 bg-green-500 text-white px-4 mb-5">
           <div>
             <h2 className="">Free Shipping For All Products</h2>
           </div>
@@ -56,14 +56,7 @@ const Header = () => {
               <h2 className="font-bold text-xl">Smart Gadgets</h2>
             </Link>
           </div>
-          <div className="flex gap-3 items-center basis-4/5 ">
-            <input
-              className="w-full py-3 border-2 border-green-500 px-5"
-              placeholder="Search products "
-            ></input>
-            <button className="bg-green-500 ml-[-30px] px-4 py-3 text-white border-2 border-green-500">
-              Submit
-            </button>
+          <div className="flex gap-3 items-center justify-end basis-4/5 ">
             {user?.uid ? (
               <>
                 {" "}
@@ -72,6 +65,9 @@ const Header = () => {
                 </Link>
                 <Link to="/wishlist">
                   <FaHeart></FaHeart>
+                </Link>
+                <Link to="/shop">
+                  <h2>Shop</h2>
                 </Link>
                 <button onClick={handleLogout}>Logout</button>
               </>
@@ -82,6 +78,9 @@ const Header = () => {
                 </Link>
                 <Link to="/wishlist">
                   <FaHeart></FaHeart>
+                </Link>
+                <Link to="/shop">
+                  <h2>Shop</h2>
                 </Link>
               </>
             )}

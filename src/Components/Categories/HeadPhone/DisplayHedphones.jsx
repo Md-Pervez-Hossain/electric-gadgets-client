@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const DisplayHedphones = ({ router }) => {
@@ -33,24 +34,31 @@ const DisplayHedphones = ({ router }) => {
 
   return (
     <div className=" shadow-lg">
-      <img src={image} alt="" className="h-72" />
-      <h2 className="font-semibold text-xl my-3 text-center"> {productName}</h2>
-      <div className="flex gap-3 justify-between">
-        <Link to={`/product/${_id}`}>
-          <button className="bg-green-500 px-4 py-2 font-bold text-white ">
-            Details{" "}
-          </button>
-        </Link>
-        <Link onClick={() => handleAddToCart(router)}>
-          <button className="bg-green-500 px-4 py-2 font-bold text-white ">
-            Cart
-          </button>
-        </Link>
-        <Link onClick={() => handleWishList(router)}>
-          <button className="bg-green-500 px-4 py-2 font-bold text-white ">
-            WishList
-          </button>
-        </Link>
+      <div className="relative">
+        <img src={image} alt="" className="h-36 w-36" />
+        <div className="flex flex-col gap-3 absolute top-3 right-3">
+          <Link onClick={() => handleAddToCart(router)}>
+            <button className=" hover:text-green-500 duration-500">
+              <FaCartPlus></FaCartPlus>
+            </button>
+          </Link>
+          <Link onClick={() => handleWishList(router)}>
+            <button className=" hover:text-green-500 duration-500">
+              <FaHeart></FaHeart>
+            </button>
+          </Link>
+        </div>
+      </div>
+      <div className="p-3">
+        <h2 className="font-semibold my-2   "> {productName}</h2>
+        <h2 className="font-semibold my-2   "> Price $ {reSellPrice}</h2>
+        <div className=" ">
+          <Link to={`/product/${_id}`}>
+            <button className=" font-bold transition ease-in-out delay-150 bg-green-500 px-4 py-1 text-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300   ">
+              Quick view
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

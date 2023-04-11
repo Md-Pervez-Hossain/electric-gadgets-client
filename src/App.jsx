@@ -13,6 +13,7 @@ import Login from "./Components/Login/Login";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Signup from "./Components/Signup/Signup";
 import WishList from "./Components/WishList/WishList";
+import Shop from "./Components/Shop/Shop";
 
 function App() {
   const router = createBrowserRouter([
@@ -75,6 +76,10 @@ function App() {
               <AddProducts></AddProducts>
             </PrivateRoute>
           ),
+        },
+        {
+          path: "/shop",
+          element: <Shop></Shop>,
         },
         {
           path: "/cartPage",

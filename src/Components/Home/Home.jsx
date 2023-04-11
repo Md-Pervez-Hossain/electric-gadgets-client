@@ -9,48 +9,55 @@ const Home = () => {
   const { user } = useContext(UserContext);
   console.log(user);
   return (
-    <div className="w-9/12 mx-auto">
-      <div className="flex flex-row   gap-5">
-        <div className="basis-1/5 sticky ">
-          <div className="pb-3">
-            <h2 className="text-2xl font-bold bg-green-500 text-white px-2 py-2">
-              Gadgets Category
-            </h2>
-          </div>
-          <div className="font-semibold">
-            <Link to="/home/headPhone">
-              <div className="flex items-center gap-2 pb-2">
-                <FaHeadphones></FaHeadphones>
-                <h2 className="transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:text-green-500 duration-300">
-                  Headphone
-                </h2>
-              </div>
-            </Link>
-            <Link to="/home/router">
-              <div className="flex items-center gap-2 pb-2">
-                <FaRoute></FaRoute>
-                <h2 className="transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:text-green-500 duration-300">
-                  Router
-                </h2>
-              </div>
-            </Link>
-            <Link to="/home/videoPlayer">
-              <div className="flex items-center gap-2 pb-2">
-                <FaViadeo></FaViadeo>
-                <h2 className="transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:text-green-500 duration-300">
-                  Video Player
-                </h2>
-              </div>
-            </Link>
-          </div>
-        </div>
-
-        <div className="basis-4/5">
-          <Slider></Slider>
-        </div>
-      </div>
+    <div className="md:w-9/12 mx-auto">
       <div>
-        <Outlet></Outlet>
+        <Slider></Slider>
+      </div>
+
+      <div className="">
+        <div className="pb-3">
+          <h2 className="text-5xl font-semibold my-10">Gadgets Category</h2>
+        </div>
+        <div className="flex flex-row gap-5 justify-between  ">
+          <div>
+            <div className="font-semibold   gap-8 basis-3/12">
+              <Link to="/home/headPhone">
+                <div className="flex flex-wrap items-center gap-2 px-4 py-2  ">
+                  <FaHeadphones></FaHeadphones>
+                  <h2 className="">Headphone</h2>
+                </div>
+              </Link>
+              <Link to="/home/router">
+                <div className="flex items-center gap-2 pb-2 px-4 py-2 ">
+                  <FaRoute></FaRoute>
+                  <h2 className="">Router</h2>
+                </div>
+              </Link>
+              <Link to="/home/videoPlayer">
+                <div className="flex items-center gap-2 pb-2 px-4 py-2 ">
+                  <FaViadeo></FaViadeo>
+                  <h2 className="">Video Player</h2>
+                </div>
+              </Link>
+            </div>
+            <div className="mt-10">
+              <div className=" h-96  carousel carousel-vertical rounded-box">
+                <div className="carousel-item h-full ">
+                  <img src="https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                </div>
+                <div className="carousel-item h-full ">
+                  <img src="https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                </div>
+                <div className="carousel-item h-full ">
+                  <img src="https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="basis-9/12">
+            <Outlet></Outlet>
+          </div>
+        </div>
       </div>
       <div>
         <FeaturedCategories></FeaturedCategories>

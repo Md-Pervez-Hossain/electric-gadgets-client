@@ -1,0 +1,6 @@
+:root {
+  --swiper-theme-color: green;
+}
+.swiper-pagination-bullets {
+  color: green !important;
+}

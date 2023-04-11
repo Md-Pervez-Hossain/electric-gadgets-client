@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { FaCartPlus, FaMinus, FaPlug, FaPlus } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaCartPlus,
+  FaMinus,
+  FaPlug,
+  FaPlus,
+} from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import DisplayAllProducts from "./DisplayAllProducts";
 
 const SingleHeadphone = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [count, setCount] = useState(1);
+  const [previous, setPrevious] = useState(0);
+  const [next, setNext] = useState(4);
+
   const [products, setProducts] = useState([]);
   const singlePhoneInfo = useLoaderData();
   const {
@@ -21,14 +31,12 @@ const SingleHeadphone = () => {
     fetch("https://electronic-gadgets-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
-        setIsLoading(true);
         setProducts(data);
-        setIsLoading(false);
+
         console.log(data);
       })
       .catch((error) => {
         console.error(error);
-        setIsLoading(false);
       });
   }, []);
 
@@ -46,48 +54,51 @@ const SingleHeadphone = () => {
       .catch((error) => console.error(error));
   };
 
+  const handleIncreement = () => {
+    console.log("Clicked");
+    const newCount = count - 1;
+    if (newCount > 0) {
+      setCount(newCount);
+    }
+  };
+
+  const handleNext = () => {
+    console.log("clicked next");
+    setPrevious(previous + 4);
+    setNext(next + 4);
+  };
+  const handlePrevious = () => {
+    if (previous > 0) {
+      setPrevious(previous - 4);
+      setNext(next - 4);
+    }
+  };
+
   return (
-    <div className="  w-9/12 mx-auto  p-4">
-      <div>
-        <div className="p-6 py-12 mb-5 bg-green-500 dark:text-gray-900">
-          <div className="container mx-auto">
-            <div className="flex flex-col lg:flex-row items-center justify-between">
-              <h2 className="text-center text-6xl tracking-tighter font-bold">
-                Up to
-                <br className="sm:hidden" />
-                50% Off
-              </h2>
-              <div className="space-x-2 text-center py-2 lg:py-0">
-                <span>Plus free shipping! Use code:</span>
-                <span className="font-bold text-lg">MAMBA</span>
-              </div>
-              <a
-                href="#"
-                rel="noreferrer noopener"
-                className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400"
-              >
-                Shop Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-row items-center justify-center gap-10">
-        <div className="basis-1/2">
+    <div className="  md:w-9/12 mx-auto  p-4">
+      <div className="flex flex-col md:flex-row  items-center justify-center gap-10">
+        <div className="basis-1/2 ">
           <img src={image} alt="" className="w-full" />
         </div>
-        <div className="basis-1/2">
+        <div className="basis-1/2 ">
           <p className="text-4xl font-bold mb-3">{productName}</p>
           <p className="mb-3">{productDetails}</p>
-          <p className="text-2xl font-bold mb-3">Price : $ {reSellPrice}</p>
+          <p className="text-2xl font-bold mb-3">
+            Price : $ {reSellPrice * count}
+          </p>
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-5 border-2 p-4">
-              <p>
-                <FaMinus></FaMinus>
+              <p onClick={() => handleIncreement()}>
+                <button>
+                  <FaMinus></FaMinus>
+                </button>
               </p>
-              <p className="font-bold">0</p>
-              <p>
-                <FaPlus></FaPlus>
+              <p className="font-bold">{count}</p>
+              <p onClick={() => setCount((previous) => previous + 1)}>
+                <button>
+                  {" "}
+                  <FaPlus></FaPlus>
+                </button>
               </p>
             </div>
             <div>
@@ -105,10 +116,21 @@ const SingleHeadphone = () => {
       </div>
       <div>
         <h2 className="text-4xl font-bold mt-32">Some Best Selling Products</h2>
-        <div className="grid grid-cols-4 gap-5 mt-10">
-          {products.map((product) => (
+        <div className="grid md:grid-cols-4 gap-5 mt-10  ">
+          {products.slice(previous, next).map((product) => (
             <DisplayAllProducts product={product}></DisplayAllProducts>
           ))}
+        </div>
+        <div className="flex items-center justify-end gap-2 my-10">
+          <button onClick={() => handlePrevious()}>
+            <FaArrowLeft></FaArrowLeft>
+          </button>
+          <button
+            onClick={() => handleNext()}
+            disabled={next > products.length}
+          >
+            <FaArrowRight></FaArrowRight>
+          </button>
         </div>
       </div>
     </div>
